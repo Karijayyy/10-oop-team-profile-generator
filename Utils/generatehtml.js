@@ -1,17 +1,40 @@
+let html = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Team Profile Generator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/flatly/bootstrap.min.css" />
+</head>
+
+<body>`
 const Employee = require('./classes/Employee')
 const Engineer = require("./classes/Engineer");
 const Intern = require("./classes/Intern");
 const Manager = require("./classes/Manager");
 
-//make links for email & git hub profiles
 const generateHTML = (myTeam) => {
+  myTeam.forEach (person =>{
+    if (person.getRole() === "Manager"){
+      createManager(person);
+    }
+    else if (person.getRole() === "Engineer"){
+      createEngineer(person);
+    }
+    else {
+      createIntern(person);
+    }
+  }); 
+  return html += `</body>
+
+  </html>`
+}
+
     const createManager = (manager) => {
-        manager.getName();
-        manager.getId();
-        manager.getEmail();
-        manager.getOfficeNumber();
-        manager.getRole();
-        return `<div class="card" style="width: 18rem;">
+      
+        return html += `<div class="card" style="width: 18rem;">
         <div class="card-header" id="Manager">
           Featured
         </div>
@@ -27,12 +50,8 @@ const generateHTML = (myTeam) => {
       </div>`
     }
     const createEngineer = (engineer) => {
-        engineer.getName();
-        engineer.getId();
-        engineer.getEmail();
-        engineer.getOfficeNumber();
-        engineer.getRole();
-        return `<div class="card" style="width: 18rem;">
+        
+        return html += `<div class="card" style="width: 18rem;">
         <div class="card-header" id="Engineer">
           Featured
         </div>
@@ -49,12 +68,8 @@ const generateHTML = (myTeam) => {
 
     }
     const createIntern = (intern) => {
-        intern.getName();
-        intern.getId();
-        intern.getEmail();
-        intern.getOfficeNumber();
-        intern.getRole();
-        return `<div class="card" style="width: 18rem;">
+        
+        return html += `<div class="card" style="width: 18rem;">
         <div class="card-header" id="Intern">
           Featured
         </div>
@@ -70,8 +85,5 @@ const generateHTML = (myTeam) => {
       </div>`
 
     }
-    // create an array to filter through the different positions per input request
 
-    module.exports = team => {
-        // return ` <-------put in html file here
-    }
+    module.exports = generateHTML

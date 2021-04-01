@@ -6,13 +6,21 @@ const fs = require("fs")
 const path = require("path")
 const generateHtml = require("./Utils/generatehtml")
 const teamMembers = []
+//call fs save
+    function writeToFile(fileName, data) {
+        return fs.writeFileSync(path.join(process.cwd(), fileName), data)
+     
+     }
+     function writeHTML(){
+         return writeToFile("generateTeam.html" , generateHtml(teamMembers))
+     }
 
-function promtUser() {
+function promptUser() {
     inquirer.prompt([
         {
             type: "list",
             message: "What kind of employee would you like to enter?",
-            choices: ["Manager", "Engineer", "Intern"],
+            choices: ["Manager", "Engineer", "Intern" , "finished"],
             name: "UserNameChoice"
         },
     ])
@@ -24,6 +32,7 @@ function promtUser() {
                 createEngineer()
             }
             else createIntern()
+            // finished goes here
         })
 }
 
@@ -53,6 +62,7 @@ function createManager() {
         .then(answers => {
             let tempManager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber,)
             teamMembers.push(tempManager)
+            promptUser()
         })
 }
 
@@ -82,6 +92,7 @@ function createEngineer() {
         .then(answers => {
             let tempEngineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub,)
             teamMembers.push(tempEngineer)
+            promptUser ()
         })
 }
 
@@ -111,9 +122,11 @@ function createIntern() {
         .then(answers => {
             let tempIntern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool,)
             teamMembers.push(tempIntern)
+            promptUser ()
+
         })
 }
 
-promtUser()
+promptUser()
 
 
