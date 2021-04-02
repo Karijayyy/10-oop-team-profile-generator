@@ -4,7 +4,7 @@ const Intern = require("./classes/Intern")
 const inquirer = require("inquirer")
 const fs = require("fs")
 const path = require("path")
-const generateHtml = require("./Utils/generatehtml")
+// 
 const teamMembers = []
 //call fs save
     function writeToFile(fileName, data) {
@@ -20,7 +20,7 @@ function promptUser() {
         {
             type: "list",
             message: "What kind of employee would you like to enter?",
-            choices: ["Manager", "Engineer", "Intern" , "finished"],
+            choices: ["Manager", "Engineer", "Intern"],
             name: "UserNameChoice"
         },
     ])
