@@ -31,8 +31,10 @@ function promptUser() {
             else if (answers.UserNameChoice === "Engineer") {
                 createEngineer()
             }
-            else createIntern()
-            // finished goes here
+            else if (answers.UserNameChoice === "Intern") {
+            } else {
+                console.log(finished)
+            } 
         })
 }
 
