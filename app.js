@@ -27,14 +27,10 @@ function promptUser() {
         .then(answers => {
             if (answers.UserNameChoice === "Manager") {
                 createManager()
-            }
-            else if (answers.UserNameChoice === "Engineer") {
+            } else if (answers.UserNameChoice === "Engineer") {
                 createEngineer()
-            }
-            else if (answers.UserNameChoice === "Intern") {
-            } else {
-                console.log(finished)
-            } 
+            }   else createIntern()
+         return;
         })
 }
 
