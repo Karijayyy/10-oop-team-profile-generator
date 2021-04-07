@@ -4,7 +4,7 @@ const Intern = require("./classes/Intern")
 const inquirer = require("inquirer")
 const fs = require("fs")
 const path = require("path")
-// 
+// const generateHtml = require("./Utils/generatehtml")
 const teamMembers = []
 //call fs save
     function writeToFile(fileName, data) {
