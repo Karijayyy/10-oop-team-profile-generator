@@ -10,10 +10,10 @@ let html = `<!DOCTYPE html>
 </head>
 
 <body>`
-const Employee = require('./classes/Employee')
-const Engineer = require("./classes/Engineer");
-const Intern = require("./classes/Intern");
-const Manager = require("./classes/Manager");
+const Employee = require('../classes/Employee')
+const Engineer = require("../classes/Engineer");
+const Intern = require("../classes/Intern");
+const Manager = require("../classes/Manager");
 
 const generateHTML = (myTeam) => {
   myTeam.forEach (person =>{
